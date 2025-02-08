@@ -1,96 +1,93 @@
 package com.example.f1standings.fragments
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.f1standings.R
 import com.example.f1standings.api.constructors.ConstructorStandingsAdapter
-import com.example.f1standings.api.constructors.ConstructorStandingsApiService
-import com.example.f1standings.api.constructors.ConstructorStandingsServiceGenerator
 import com.example.f1standings.models.constructors.BaseModel
-import retrofit2.Call
-import retrofit2.Callback
+import com.example.f1standings.models.constructors.Parameters
+import com.example.f1standings.models.constructors.Response
+import com.example.f1standings.models.constructors.Team
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ConstructorsStandings.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ConstructorsStandings : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_constructors_standings, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val constructorServiceGenerator = ConstructorStandingsServiceGenerator.buildService(ConstructorStandingsApiService::class.java)
-        val call = constructorServiceGenerator.getConstructorsStandings()
-        val recyclerView = getView()?.findViewById<RecyclerView>(R.id.constructorStandings_RecView)
+        val sampleData = getSampleData()
 
-        call.enqueue(object: Callback<BaseModel> {
-            override fun onResponse(
-                call: Call<BaseModel>,
-                response: retrofit2.Response<BaseModel>
-            ) {
-                if(response.isSuccessful) {
-                    Log.e("success", response.body().toString())
-                    recyclerView?.apply {
-                        layoutManager = LinearLayoutManager(context)
-                        adapter = ConstructorStandingsAdapter(response.body()!!)
-                    }
-                }
-            }
+        val recyclerView = view.findViewById<RecyclerView>(R.id.constructorStandings_RecView)
+        recyclerView?.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = ConstructorStandingsAdapter(sampleData)
+        }
+    }
 
-            override fun onFailure(call: Call<BaseModel>, t: Throwable) {
-                t.printStackTrace()
-                Log.e("error",t.message.toString())
-            }
-        })
+    private fun getSampleData(): BaseModel {
+        val sampleResponse = BaseModel(
+            errors = emptyList(),
+            get = "sample_get",
+            parameters = Parameters("2024"),
+            response = listOf(
+                Response(
+                    points = 100,
+                    position = 1,
+                    season = 2024,
+                    team = Team(1, "https://static.wikia.nocookie.net/f1wikia/images/d/d6/FerrariLogo.png/revision/latest?cb=20220216092511", "Team Ferrari")
+                ),
+                Response(
+                    points = 90,
+                    position = 2,
+                    season = 2024,
+                    team = Team(2, "https://brandlogos.net/wp-content/uploads/2022/07/mercedes-amg_petronas_f1-logo_brandlogos.net_lq7eb.png", "Team Mercedes")
+                ),
+                Response(
+                    points = 80,
+                    position = 3,
+                    season = 2024,
+                    team = Team(3, "https://cdn-6.motorsport.com/images/mgl/Y99JQRbY/s8/red-bull-racing-logo-1.jpg", "Team Red Bull Racing")
+                ),
+                Response(
+                    points = 70,
+                    position = 4,
+                    season = 2024,
+                    team = Team(4, "https://brandlogos.net/wp-content/uploads/2022/04/mclaren_formula_1_team-logo-brandlogos.net_.png", "Team McLaren")
+                ),
+                Response(
+                    points = 60,
+                    position = 5,
+                    season = 2024,
+                    team = Team(5, "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Alpine_F1_Team_Logo.svg/2233px-Alpine_F1_Team_Logo.svg.png", "Team Alpine")
+                )
+            ),
+            results = 5
+        )
+        return sampleResponse
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ConstructorsStandings.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             ConstructorsStandings().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putString("param1", param1)
+                    putString("param2", param2)
                 }
             }
     }

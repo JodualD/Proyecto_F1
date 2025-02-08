@@ -1,19 +1,19 @@
 <resources>
     <string name="app_name">F1Standings</string>
-    <string name="app_title">Paddock</string>
+    <string name="app_title">Móviles 2 BIM</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="constructors">Constructors</string>
-    <string name="drivers">Drivers</string>
-    <string name="driver_standings">Drivers Standings</string>
-    <string name="next_race">Next Race</string>
-    <string name="next_race_name">Abu Dhabi Grand Prix 2022</string>
+    <string name="constructors">Escuderías</string>
+    <string name="drivers">Pilotos</string>
+    <string name="driver_standings">Clasificación de pilotos</string>
+    <string name="next_race">Siguiente carrera</string>
+    <string name="next_race_name">Abu Dhabi Grand Prix 2024</string>
     <string name="next_race_circuit">Yas Marina Circuit</string>
-    <string name="top_stories">Top Stories</string>
-    <string name="story_news">NEWS</string>
-    <string name="races_heading">Races</string>
-    <string name="races_season">SEASON: 2022</string>
-    <string name="lap_time">LAP TIME</string>
-    <string name="total_distance">TOTAL DISTANCE</string>
-    <string name="constructors_standings">Constructors Standings</string>
+    <string name="top_stories">Noticias destacadas</string>
+    <string name="story_news">NOTICIAS</string>
+    <string name="races_heading">Carreras</string>
+    <string name="races_season">Temporada: 2024</string>
+    <string name="lap_time">TIEMPO DE VUELTA</string>
+    <string name="total_distance">DISTANCIA TOTAL</string>
+    <string name="constructors_standings">Clasificación de escuderías</string>
 </resources>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Home" android:icon="@drawable/nav_home" android:id="@+id/nav_home"/>
-    <item android:title="Drivers" android:icon="@drawable/nav_drivers" android:id="@+id/nav_standings"/>
-    <item android:title="Teams" android:icon="@drawable/nav_standings" android:id="@+id/nav_teams"/>
-    <item android:title="Races" android:icon="@drawable/nav_races" android:id="@+id/nav_races"/>
+    <item android:title="Inicio" android:icon="@drawable/nav_home" android:id="@+id/nav_home"/>
+    <item android:title="Pilotos" android:icon="@drawable/nav_drivers" android:id="@+id/nav_standings"/>
+    <item android:title="Escuderías" android:icon="@drawable/nav_standings" android:id="@+id/nav_teams"/>
+    <item android:title="Carreras" android:icon="@drawable/nav_races" android:id="@+id/nav_races"/>
 </menu>

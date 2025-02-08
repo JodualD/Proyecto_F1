@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Response(
     @SerializedName("behind")
-    val behind: Any,
+    val behind: Any?,
     @SerializedName("driver")
     val driver: Driver,
     @SerializedName("points")
@@ -17,5 +17,5 @@ data class Response(
     @SerializedName("team")
     val team: Team,
     @SerializedName("wins")
-    val wins: Any
+    val wins: Any?
 )

@@ -5,7 +5,5 @@ import com.google.gson.annotations.SerializedName
 
 data class Parameters(
     @SerializedName("season")
-    val season: String,
-    @SerializedName("type")
-    val type: String
+    val season: String
 )

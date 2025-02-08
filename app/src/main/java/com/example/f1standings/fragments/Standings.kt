@@ -1,101 +1,97 @@
 package com.example.f1standings.fragments
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.f1standings.R
 import com.example.f1standings.api.drivers.DriverStandingsAdapter
-import com.example.f1standings.api.drivers.DriverStandingsApiService
-import com.example.f1standings.api.drivers.DriverStandingsServiceGenerator
 import com.example.f1standings.models.drivers.BaseModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.f1standings.models.drivers.Response
+import com.example.f1standings.models.drivers.Driver
+import com.example.f1standings.models.drivers.Parameters
+import com.example.f1standings.models.drivers.Team
+import java.lang.reflect.Parameter
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [Standings.newInstance] factory method to
- * create an instance of this fragment.
- */
 class Standings : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_standings, container, false)
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val driverServiceGenerator = DriverStandingsServiceGenerator.buildService(DriverStandingsApiService::class.java)
-        val call = driverServiceGenerator.getDriverStandings()
-        val recyclerView = getView()?.findViewById<RecyclerView>(R.id.driverStandings_RecView)
+        val driverStandings = getSampleData()
 
-        call.enqueue(object: Callback<BaseModel> {
-            override fun onResponse(
-                call: Call<BaseModel>,
-                response: retrofit2.Response<BaseModel>
-            ) {
-                if(response.isSuccessful) {
-                        Log.e("success", response.body().toString())
-                    recyclerView?.apply {
-                        layoutManager = LinearLayoutManager(context)
-                        adapter = DriverStandingsAdapter(response.body()!!)
-                    }
-                }
-            }
+        val recyclerView = view.findViewById<RecyclerView>(R.id.driverStandings_RecView)
+        recyclerView?.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = DriverStandingsAdapter(driverStandings)
+        }
+    }
 
-            override fun onFailure(call: Call<BaseModel>, t: Throwable) {
-                t.printStackTrace()
-                Log.e("error",t.message.toString())
-            }
-        })
+    private fun getSampleData(): BaseModel {
+        val sampleResponse = BaseModel(
+            errors = emptyList(),
+            get = "sample_get",
+            parameters = Parameters("2024"),
+            response = listOf(
+                Response(
+                    behind = null,
+                    Driver("HAM", 1, "https://a.espncdn.com/combiner/i?img=/i/headshots/rpm/players/full/868.png", "Lewis Hamilton", 44),
+                    250,
+                    1,
+                    2024,
+                    Team(1, "https://brandlogos.net/wp-content/uploads/2022/07/mercedes-amg_petronas_f1-logo_brandlogos.net_lq7eb.png", "Mercedes"),
+                    10
+                ),
+                Response(
+                    behind = 10,
+                    Driver("VER", 2, "https://a.espncdn.com/combiner/i?img=/i/headshots/rpm/players/full/4665.png", "Max Verstappen", 33),
+                    150,
+                    2,
+                    2024,
+                    Team(2, "https://cdn-6.motorsport.com/images/mgl/Y99JQRbY/s8/red-bull-racing-logo-1.jpg", "Red Bull Racing"),
+                    9
+                ),
+                Response(
+                    behind = 20,
+                    Driver("NOR", 3, "https://a.espncdn.com/combiner/i?img=/i/headshots/rpm/players/full/5579.png", "Lando Norris", 4),
+                    50,
+                    3,
+                    2024,
+                    Team(3, "https://brandlogos.net/wp-content/uploads/2022/04/mclaren_formula_1_team-logo-brandlogos.net_.png", "McLaren"),
+                    8
+                ),
+                Response(
+                    behind = 30,
+                    Driver("LEC", 4, "https://a.espncdn.com/combiner/i?img=/i/headshots/rpm/players/full/5498.png&w=350&h=254", "Charles Leclerc", 16),
+                    10,
+                    4,
+                    2024,
+                    Team(4, "https://static.wikia.nocookie.net/f1wikia/images/d/d6/FerrariLogo.png/revision/latest?cb=20220216092511", "Ferrari"),
+                    7
+                )
+            ),
+            results = 4
+        )
+        return sampleResponse
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Standings.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             Standings().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putString("param1", param1)
+                    putString("param2", param2)
                 }
             }
     }
