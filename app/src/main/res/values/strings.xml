@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">Proyecto_F1</string>
-    <string name="app_title">F1</string>
+    <string name="app_name">F1Standings</string>
+    <string name="app_title">Paddock</string>
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="constructors">Constructors</string>
     <string name="drivers">Drivers</string>

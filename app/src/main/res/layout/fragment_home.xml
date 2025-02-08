@@ -69,36 +69,36 @@
 
 
 
-    <LinearLayout
-        android:layout_below="@id/top_stories"
-        android:id="@+id/first_story"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <ImageView
+        <LinearLayout
+            android:layout_below="@id/top_stories"
+            android:id="@+id/first_story"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:src="@drawable/mick"
-            android:scaleType="centerCrop" />
-
-        <TextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/story_news"
-            android:textColor="@color/f1red"
-            android:fontFamily="@font/inter_medium"
-            android:textSize="12sp"
-            android:layout_marginTop="5dp"/>
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Schumacher and Haas to part ways at the end of 2022"
-            android:textColor="@color/f1darkblue"
-            android:fontFamily="@font/inter_bold"
-            android:textSize="18sp" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/mick"
+                android:scaleType="centerCrop" />
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/story_news"
+                android:textColor="@color/f1red"
+                android:fontFamily="@font/inter_medium"
+                android:textSize="12sp"
+                android:layout_marginTop="5dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Schumacher and Haas to part ways at the end of 2022"
+                android:textColor="@color/f1darkblue"
+                android:fontFamily="@font/inter_bold"
+                android:textSize="18sp" />
+
+        </LinearLayout>
 
 </RelativeLayout>

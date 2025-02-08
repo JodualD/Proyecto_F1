@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.ConstructorsStandings">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/constructors_standings"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/standings_heading_c"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/standings_heading_c"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/constructorStandings_RecView"
+        tools:listitem="@layout/constructor_card"
+        />
+
+</RelativeLayout>
