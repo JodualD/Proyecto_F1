@@ -47,21 +47,21 @@ class Races : Fragment() {
             response = listOf(
                 Response(
                     competition = Competition(1, Location("Monaco", "Monaco"), "Grand Prix de Monaco"),
-                    date = "2022-05-29T12:00:00Z",
+                    date = "2024-05-29T12:00:00Z",
                     circuit = Circuit(1, "https://lebalap.academy/wp-content/uploads/2021/02/esquema-circuito-de-monaco.png", "Monaco"),
                     distance = "305.27 km",
                     fastestLap = FastestLap(Driver(1),"1:14.123")
                 ),
                 Response(
                     competition = Competition(2, Location("Monza", "Italy"), "Grand Prix de Italy"),
-                    date = "2022-09-11T12:00:00Z",
+                    date = "202-09-11T12:00:00Z",
                     circuit = Circuit(2, "https://lebalap.academy/wp-content/uploads/2021/02/image-6.png", "Monza"),
                     distance = "306.72 km",
                     fastestLap = FastestLap(Driver(2),"1:20.123")
                 ),
                 Response(
                     competition = Competition(3, Location("Suzuka", "Japan"), "Grand Prix de Japan"),
-                    date = "2022-10-09T12:00:00Z",
+                    date = "2024-10-09T12:00:00Z",
                     circuit = Circuit(3, "https://lebalap.academy/wp-content/uploads/2021/02/image-7.png", "Suzuka"),
                     distance = "307.45 km",
                     fastestLap = FastestLap(Driver(3),"1:22.123")
