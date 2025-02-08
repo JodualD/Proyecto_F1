@@ -54,7 +54,7 @@ class Races : Fragment() {
                 ),
                 Response(
                     competition = Competition(2, Location("Monza", "Italy"), "Grand Prix de Italy"),
-                    date = "202-09-11T12:00:00Z",
+                    date = "2024-09-11T12:00:00Z",
                     circuit = Circuit(2, "https://lebalap.academy/wp-content/uploads/2021/02/image-6.png", "Monza"),
                     distance = "306.72 km",
                     fastestLap = FastestLap(Driver(2),"1:20.123")
